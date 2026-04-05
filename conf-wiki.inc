@@ -22,9 +22,7 @@ server {
 
     location ~ ^/w/(index|load|api|thumb|opensearch_desc|rest|img_auth)\.php$ {
         include fastcgi_params;
-        fastcgi_param PATH_INFO $fastcgi_path_info;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_param DOCUMENT_ROOT $document_root;
         fastcgi_pass php;
     }
 
@@ -32,6 +30,8 @@ server {
     location /w/images {
         # Separate location for images/ so .php execution won't apply
         add_header X-Content-Type-Options "nosniff";
+        # Serve uploaded HTML as plaintext, don't execute SHTML
+        types { text/plain html htm shtml phtml; }
     }
     location /w/images/deleted {
         # Deny access to deleted images folder
@@ -39,19 +39,24 @@ server {
     }
     # MediaWiki assets (usually images)
     location ~ ^/w/resources/(assets|lib|src) {
-        try_files $uri 404;
+        try_files $uri =404;
         add_header Cache-Control "public";
         expires 7d;
     }
     # Assets, scripts and styles from skins and extensions
-    location ~ ^/w/(skins|extensions)/.+\.(css|js|gif|jpg|jpeg|png|svg|wasm)$ {
-        try_files $uri 404;
+    location ~ ^/w/(skins|extensions)/.+\.(css|js|gif|jpg|jpeg|png|svg|wasm|ttf|woff|woff2)$ {
+        try_files $uri =404;
         add_header Cache-Control "public";
         expires 7d;
     }
     # License and credits files
     location ~ ^/w/(COPYING|CREDITS) {
         default_type text/plain;
+    }
+
+    # Handling for Mediawiki REST API, see [[mw:API:REST_API]]
+    location /w/rest.php/ {
+        try_files $uri $uri/ /w/rest.php?$query_string;
     }
 
     location /w/mw-config/ {
@@ -63,11 +68,6 @@ server {
             fastcgi_param DOCUMENT_ROOT $document_root;
             fastcgi_pass php;
         }
-    }
-
-    # Handling for Mediawiki REST API, see [[mw:API:REST_API]]
-    location /w/rest.php/ {
-        try_files $uri $uri/ /w/rest.php?$query_string;
     }
 
     ## Uncomment the following code for handling image authentication
