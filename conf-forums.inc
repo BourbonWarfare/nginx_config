@@ -13,7 +13,6 @@ server {
     server_name  forums.bourbonwarfare.com forums.bwarma.com forums.bourbonwarfare.club;
     port_in_redirect off;
 
-    set_real_ip_from X-Forwarded-For;
     real_ip_header X-Real-IP;
 
     root B:/web/bourbonwarfare.com/forums/;
