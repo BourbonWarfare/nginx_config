@@ -2,6 +2,7 @@
 server {
     listen       443 ssl;
     server_name  staging.bourbonwarfare.com staging.bwarma.com;
+    http2 on;
 
     include B:/web/_configs/nginx_config/conf-anubis.inc;
 }

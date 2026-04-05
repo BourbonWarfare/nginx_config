@@ -2,6 +2,7 @@
 server {
     listen       443 ssl;
     server_name mods.bourbonwarfare.com mods.bwarma.com;
+    http2 on;
 
     include B:/web/_configs/nginx_config/conf-anubis.inc;
 }
@@ -12,6 +13,7 @@ server {
     server_name mods.bourbonwarfare.com mods.bwarma.com;
 
     port_in_redirect off;
+    root B:/web/bourbonwarfare.com/mods/;
 
     location / {
         index index.html;
