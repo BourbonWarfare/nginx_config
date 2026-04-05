@@ -52,6 +52,18 @@ server {
         default_type text/plain;
     }
 
+    location /w/mw-config/ {
+        # Do this inside of a location so it can be negated
+        location ~ \.php$ {
+            allow 127.0.0.1;
+            deny all;
+            
+            include /etc/nginx/fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass 127.0.0.1:9000; # or whatever port your PHP-FPM listens on
+        }
+    }
+
     # Handling for Mediawiki REST API, see [[mw:API:REST_API]]
     location /w/rest.php/ {
         try_files $uri $uri/ /w/rest.php?$query_string;
