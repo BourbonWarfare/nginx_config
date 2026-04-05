@@ -55,9 +55,6 @@ server {
     location /w/mw-config/ {
         # Do this inside of a location so it can be negated
         location ~ \.php$ {
-            allow 127.0.0.1;
-            deny all;
-
             include fastcgi_params;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
