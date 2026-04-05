@@ -63,9 +63,7 @@ server {
         # Do this inside of a location so it can be negated
         location ~ \.php$ {
             include fastcgi_params;
-            fastcgi_param PATH_INFO $fastcgi_path_info;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_param DOCUMENT_ROOT $document_root;
             fastcgi_pass php;
         }
     }
