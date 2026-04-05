@@ -15,7 +15,7 @@ server {
     port_in_redirect off;
 
     root   B:/web/mediawiki;
-    index  index.php
+    index  index.php;
 
     client_max_body_size 100m;
     client_body_timeout 60s;
@@ -76,7 +76,7 @@ server {
 
     # Handling for the article path (pretty URLs)
     location /wiki/ {
-        rewrite ^/wiki/(?<pagename>.*)$ /w/index.php;
+        rewrite ^/wiki/(?<pagename>.*)$ /w/index.php?title=$pagename last;
     }
 
     # Allow robots.txt in case you have one
