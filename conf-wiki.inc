@@ -15,7 +15,7 @@ server {
     port_in_redirect off;
 
     location / {
-        root   B:/web/wiki/current/;
+        root   B:/web/mediawiki/current/;
         index  index.html index.htm;
     }
 }
