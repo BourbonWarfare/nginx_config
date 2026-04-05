@@ -14,7 +14,7 @@ server {
 
     port_in_redirect off;
 
-    root   B:/web/mediawiki/current/;
+    root   B:/web/mediawiki/current;
     index  index.php
 
     client_max_body_size 100m;
