@@ -22,7 +22,7 @@ server {
 
     location ~ ^/w/(index|load|api|thumb|opensearch_desc|rest|img_auth)\.php$ {
         include fastcgi_params;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
         fastcgi_pass php;
     }
 
@@ -63,7 +63,7 @@ server {
         # Do this inside of a location so it can be negated
         location ~ \.php$ {
             include fastcgi_params;
-            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
         }
     }
