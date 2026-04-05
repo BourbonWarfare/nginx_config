@@ -23,7 +23,7 @@ server {
     location ~ ^/w/(index|load|api|thumb|opensearch_desc|rest|img_auth)\.php$ {
         include fastcgi_params;
         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-        fastcgi_pass unix:/run/php/php8.1-fpm.sock; # or whatever port your PHP-FPM listens on
+        fastcgi_pass php;
     }
 
     # Images
@@ -51,17 +51,6 @@ server {
     location ~ ^/w/(COPYING|CREDITS) {
         default_type text/plain;
     }
-
-    ## Uncomment the following code if you wish to use the installer/updater
-    ## installer/updater
-    #location /w/mw-config/ {
-    #    # Do this inside of a location so it can be negated
-    #    location ~ \.php$ {
-    #        include /etc/nginx/fastcgi_params;
-    #        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-    #        fastcgi_pass 127.0.0.1:9000; # or whatever port your PHP-FPM listens on
-    #    }
-    #}
 
     # Handling for Mediawiki REST API, see [[mw:API:REST_API]]
     location /w/rest.php/ {
