@@ -3,7 +3,7 @@ server {
     listen       443 ssl;
     server_name  forums.bourbonwarfare.com forums.bwarma.com forums.bourbonwarfare.club;
 
-    include B:/web/_configs/nginx_config/conf-anubis.inc";
+    include B:/web/_configs/nginx_config/conf-anubis.inc;
 }
 
 server {
