@@ -60,6 +60,8 @@ server {
     }
 
     location /w/mw-config/ {
+        deny all;
+        allow 104.128.50.152;
         # Do this inside of a location so it can be negated
         location ~ \.php$ {
             include fastcgi_params;
