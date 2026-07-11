@@ -13,6 +13,10 @@ server {
     server_name  hub.bourbonwarfare.com hub.bwarma.com hub.bourbonwarfare.club;
 
     port_in_redirect off;
+    proxy_connect_timeout       300;
+    proxy_send_timeout          300;
+    proxy_read_timeout          300;
+    send_timeout                300;
 
     # Browser endpoints
     location / {
