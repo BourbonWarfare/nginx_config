@@ -36,7 +36,7 @@ server {
     }
     
     # Static Endpoints
-    location /static/(.*)$ {
+    location /static(.*)$ {
         root B:/web/potato_backend/static
     }
 }

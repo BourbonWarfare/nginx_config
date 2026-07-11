@@ -28,7 +28,7 @@ server {
     }
     
     # Static Endpoints
-    location /static/(.*)$ {
-        root B:/potato_staging/potato_backend/static
+    location /static(.*)$ {
+        root B:/potato_staging/potato_backend/static;
     }
 }
