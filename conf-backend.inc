@@ -32,6 +32,6 @@ server {
     
     # Static Endpoints
     location /static/ {
-        alias B:/web/potato_backend/static;
+        alias B:/web/potato_backend/static/;
     }
 }
