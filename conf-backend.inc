@@ -35,6 +35,6 @@ server {
     location /static/ {
         alias B:/web/potato_backend/static/;
         open_file_cache off;
-        add_header Cache-Control "must-revalidate, proxy-revalidate, max-age=21600";
+        add_header Cache-Control "must-revalidate, proxy-revalidate, max-age=14400";
     }
 }
