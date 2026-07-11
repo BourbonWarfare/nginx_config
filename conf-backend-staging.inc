@@ -26,4 +26,9 @@ server {
     location /api(.*)$ {
         proxy_pass  http://127.0.0.1:8500/api$1;
     }
+    
+    # Static Endpoints
+    location /static/(.*)$ {
+        root B:/potato_staging/potato_backend/static
+    }
 }
