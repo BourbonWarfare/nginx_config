@@ -33,7 +33,7 @@ server {
     }
     
     # Static Endpoints
-    location /static/ {
+    location ^~ /static/ {
         alias B:/potato_staging/potato_backend/static/;
         open_file_cache off;
         add_header Cache-Control "must-revalidate, proxy-revalidate, max-age=14400";
