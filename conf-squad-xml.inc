@@ -14,7 +14,7 @@ server {
     port_in_redirect off;
 
     location / {
-        proxy_pass          http://127.0.0.1:12239/auth/remarks/;
+        proxy_pass          http://127.0.0.1:12239/auth/remarks;
         proxy_set_header    Host hub.bourbonwarfare.com;
         proxy_ssl_server_name on;
 
