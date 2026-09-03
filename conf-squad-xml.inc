@@ -15,6 +15,6 @@ server {
     port_in_redirect off;
 
     location / {
-        proxy_pass https://hub.bourbonwarfare.com/auth/remarks
+        proxy_pass https://hub.bourbonwarfare.com/auth/remarks;
     }
 }
