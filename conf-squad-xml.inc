@@ -25,10 +25,11 @@ server {
         proxy_set_header    CF-Connecting-IP $http_cf_connecting_ip;
     }
     location ^~ /static/ {
-        proxy_pass          http://127.0.0.1:12239/static;
-        proxy_set_header    Host hub.bourbonwarfare.com;
-        proxy_ssl_server_name on;
+        # Omit the URI path so Nginx passes the full original URI (/static/img/favicon.ico) directly to the backend
+        proxy_pass          http://127.0.0.1:12239;
 
+        proxy_set_header    Host hub.bourbonwarfare.com;
+        
         # Forward real client headers passed through Anubis
         proxy_set_header    X-Real-IP $remote_addr;
         proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
